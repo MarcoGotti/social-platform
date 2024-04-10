@@ -45,10 +45,10 @@
 - user_id | INT(10) unsigned MU
 - date | DATETIME DEFAULT(CURRENT_TIMESTAMP)
 
-## commenti
+## comments
 
 - id | BIGINT(20) unsigned PK AI
 - post_id | BIGINT(15) unsigned MU
 - user_id | INT(10) unsigned MU
 - text | TEXT
-- date | DATETIME DEFAULT(CURRENT_TIMESTAMP)
+- publishing_date | DATETIME DEFAULT(CURRENT_TIMESTAMP)
