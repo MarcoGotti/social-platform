@@ -6,22 +6,34 @@ JOIN `users` ON `users`.`id`= `medias`.`user_id`
 WHERE `type`='video'
 GROUP BY `user_id`;
 
-
+_______________________________________________________________________
 2. Seleziona tutti i post senza Like (13)
 
 SELECT `id`, `title` 
 FROM `posts` 
 WHERE `id` NOT IN(SELECT `post_id` FROM `likes`);
 
-
+________________________________________________________________________
 3. Conta il numero di like per ogni post (165)  ????quelli con 0 like li conta come 1 perchè posts.id????
+
+# Correct Version
+
+SELECT posts.id, posts.title, t.`tot_likes` 
+FROM posts
+LEFT JOIN 
+    (SELECT post_id, COUNT(*) AS `tot_likes` 
+    FROM `likes` 
+    GROUP BY post_id
+    )t ON t.post_id=posts.id;
+
+# Almost Correct: where COUNT() should be NULL it is 1 instead (because: GROUP BY `posts`.`id`;)
 
 SELECT `posts`.`id`, `posts`.`title`, COUNT(*) 
 FROM `posts` 
 LEFT JOIN `likes` ON `likes`.`post_id`=`posts`.`id` 
 GROUP BY `posts`.`id`;
 
-
+_______________________________________________________________________
 4. Ordina gli utenti per il numero di media caricati (25)
 
 # Simple Version
@@ -39,5 +51,14 @@ GROUP BY `posts`.`id`;
     GROUP BY `user_id`
     ORDER BY `tot_uploaded_medias`;
 
-
+_______________________________________________________________________
 5. Ordina gli utenti per totale di likes ricevuti nei loro posts (25)
+
+SELECT T.username, SUM(T.tot) AS tot_likes
+FROM(SELECT  username, posts.id, COUNT(*) AS tot
+FROM users
+JOIN posts ON posts.user_id=users.id
+JOIN likes ON likes.post_id=posts.id
+GROUP BY likes.post_id)T
+GROUP BY T.username 
+ORDER BY tot_likes;
