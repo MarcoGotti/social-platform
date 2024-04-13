@@ -14,11 +14,11 @@ FROM `posts`
 WHERE `id` NOT IN(SELECT `post_id` FROM `likes`);
 
 ________________________________________________________________________
-3. Conta il numero di like per ogni post (165)  ????quelli con 0 like li conta come 1 perchè posts.id????
+3. Conta il numero di like per ogni post (165) 
 
 # Correct Version
 
-SELECT posts.id, posts.title, t.`tot_likes` 
+SELECT DATE(`date`), `title`, `tags`, t.`tot_likes` 
 FROM posts
 LEFT JOIN 
     (SELECT post_id, COUNT(*) AS `tot_likes` 
@@ -26,7 +26,7 @@ LEFT JOIN
     GROUP BY post_id
     )t ON t.post_id=posts.id;
 
-# Almost Correct: where COUNT() should be NULL it is 1 instead (because: GROUP BY `posts`.`id`;)
+# Almost Correct: where COUNT(*) should be NULL it is 1 instead (because: GROUP BY `posts`.`id`;)
 
 SELECT `posts`.`id`, `posts`.`title`, COUNT(*) 
 FROM `posts` 
