@@ -1,5 +1,7 @@
 <?php
-
+/* colorare i badges. Per farlo puoi provare ad usare una Class
+Poi metti in html uno spazio  php con include file. In file  */
+/* ricerca con tags WHERE tags LIKE "%estate%" */
 /* Connect to the database via PHP */
 
 define('DB_SERVERNAME', 'localhost');
@@ -19,13 +21,22 @@ $sql = (
     FROM posts
     LEFT JOIN (SELECT post_id, COUNT(*) AS `tot_likes` 
               FROM `likes`
-              GROUP BY post_id)t ON t.post_id=posts.id;'
+              GROUP BY post_id)t ON t.post_id = posts.id
+    WHERE `tot_likes`= 12;'
 );
 
 $result = $connection->query($sql);
+//var_dump($result->fetch_all(MYSQLI_ASSOC));
+var_dump($result->fetch_assoc());
 //var_dump(rand(10, 200));
 
-/* $tagsList = [];
+//****************************************** */
+/* $age = array('peter' => '35', 'marco' => '36', 'paolo' => '38');
+var_dump($age); */
+//****************************************** */
+
+$tagsList = [];
+$array = [];
 if ($result && $result->num_rows > 0) {
 
 
@@ -39,13 +50,18 @@ if ($result && $result->num_rows > 0) {
 
         foreach ($tags as $tag) {
 
-            if (!in_array($tag, $tagsList)) {
-                array_push($tagsList, $tag);
+            if (!in_array($tag, $array)) {
+
+                array_push($array, $tag);
+                //al posto di ste due righe di codice richiami Class Cathegory()
+                $obj = array('name' => $tag, 'color' => rand(1, 10));
+                array_push($tagsList, $obj);
             }
         };
     }
 }
-var_dump($tagsList); */
+var_dump($tagsList[0]);
+var_dump($tagsList[0]['name']);
 
 ?>
 
@@ -61,7 +77,6 @@ var_dump($tagsList); */
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./assets/style.css">
-
 </head>
 
 <body>
@@ -78,7 +93,8 @@ var_dump($tagsList); */
                     while ($row = $result->fetch_assoc()) :
                         ['date' => $date, 'title' => $title, 'tot_likes' => $tot_likes] = $row;
 
-                        $tags = array_values(array_diff(explode('"', $row['tags']), array("[", ", ", "]"))); ?>
+                        $tags = array_values(array_diff(explode('"', $row['tags']), array("[", ", ", "]")));
+                        /* var_dump($tags); */ ?>
 
                         <div class="col">
 
