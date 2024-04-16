@@ -1,6 +1,6 @@
 <?php
 
-
+/* Connect to the database via PHP */
 define('DB_SERVERNAME', 'localhost');
 define('DB_USERNAME', 'root');
 define('DB_PASSWORD', 'root');

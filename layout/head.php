@@ -11,7 +11,12 @@
 </head>
 
 <body>
-    <header class="p-3 text-center bg-body-secondary text-danger shadow">
-        <h2 class="text-uppercase fw-bold">Social plattform</h2>
+    <header class="justify-content-evenly p-3 text-center bg-body-secondary shadow d-flex align-items-center">
+        <h2 class="mb-0 text-uppercase text-danger fw-bold">Social plattform</h2>
+        <div>
+            <a href="http://localhost/social-platform/index.php">Home</a>
+            <a href="http://localhost/social-platform/models/Post.php">Post</a>
+            <a href="http://localhost/social-platform/models/Media.php">Media</a>
+        </div>
 
     </header>

@@ -1,7 +1,6 @@
 <?php
 
 /* ricerca con tags WHERE tags LIKE "%estate%" */
-/* Connect to the database via PHP */
 
 require_once __DIR__ . '/database/conn_mysql.php';
 require_once __DIR__ . '/database/db_mysql.php';
