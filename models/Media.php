@@ -1,6 +1,6 @@
 <?php
 
-include './Post.php';
+//include './Post.php';
 
 class Media
 {
@@ -11,26 +11,6 @@ class Media
         public string $created_at
     ) {
         $this->id = Post::setId(get_class($this));
-    }
-}
-
-
-$trial1 = new Media(date("Y/m/d"));
-var_dump($trial1);
-$trial2 = new Media(date("Y/m/d"));
-var_dump($trial2);
-
-
-class Video extends Media
-{
-    public string $type;
-    public string $path;
-
-    function __construct($created_at)
-    {
-        parent::__construct($created_at);
-        $this->type = get_class($this);
-        $this->path = self::setPath(get_class($this));
     }
 
     public static function setPath($mediaType)
@@ -78,8 +58,28 @@ class Video extends Media
     }
 }
 
-$trial1 = new Video(date("Y/m/d"));
+
+/* $trial1 = new Media(date("Y/m/d"));
 var_dump($trial1);
+$trial2 = new Media(date("Y/m/d"));
+var_dump($trial2); */
+
+
+class Video extends Media
+{
+    public string $type;
+    public string $path;
+
+    function __construct($created_at)
+    {
+        parent::__construct($created_at);
+        $this->type = get_class($this);
+        $this->path = Media::setPath(get_class($this));
+    }
+}
+
+/* $trial1 = new Video(date("Y/m/d"));
+var_dump($trial1); */
 
 
 class Photo extends Media
@@ -91,9 +91,9 @@ class Photo extends Media
     {
         parent::__construct($created_at);
         $this->type = get_class($this);
-        $this->path = Video::setPath(get_class($this));
+        $this->path = Media::setPath(get_class($this));
     }
 }
 
-$trial2 = new Photo(date("Y/m/d"));
-var_dump($trial2);
+/* $trial2 = new Photo(date("Y/m/d"));
+var_dump($trial2); */
