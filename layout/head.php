@@ -16,7 +16,7 @@
         <div>
             <a href="http://localhost/social-platform/index.php">Home</a>
             <a href="http://localhost/social-platform/models/Post.php">Post</a>
-            <a href="http://localhost/social-platform/models/Media.php">Media</a>
+
         </div>
 
     </header>
