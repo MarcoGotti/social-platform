@@ -5,8 +5,7 @@ $sql = (
     FROM posts
     LEFT JOIN (SELECT post_id, COUNT(*) AS `tot_likes` 
               FROM `likes`
-              GROUP BY post_id)t ON t.post_id = posts.id
-    /* WHERE `tot_likes`= 12 */;'
+              GROUP BY post_id)t ON t.post_id = posts.id;'
 );
 
 $result = $connection->query($sql);

@@ -9,15 +9,13 @@ class Post
     public static int $numb = 0;
     public int $id;
     public array $media;
-    /* public $tags;
-    public $updated_at; */
 
     public function __construct(
-        public int $user_id,
+        public string $username,
         public string $title,
         public string $created_at,
-        /* array $tags,
-        string $updated_at, */
+        public int $likes,
+        public array $tags
     ) {
         $this->id = self::setId(get_class($this));
     }
