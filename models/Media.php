@@ -1,11 +1,11 @@
 <?php
 
-//include './Post.php';
-
 class Media
 {
     public static int $numb = 0;
     public int $id;
+    public string $type;
+    public string $path;
 
     public function __construct()
     {
@@ -62,17 +62,8 @@ class Media
 }
 
 
-/* $trial1 = new Media(date("Y/m/d"));
-var_dump($trial1);
-$trial2 = new Media(date("Y/m/d"));
-var_dump($trial2); */
-
-
 class Video extends Media
 {
-    public string $type;
-    public string $path;
-
     function __construct()
     {
         parent::__construct();
@@ -80,16 +71,10 @@ class Video extends Media
         $this->path = Media::setPath(get_class($this));
     }
 }
-
-/* $trial1 = new Video(date("Y/m/d"));
-var_dump($trial1); */
 
 
 class Photo extends Media
 {
-    public string $type;
-    public string $path;
-
     function __construct()
     {
         parent::__construct();
@@ -97,6 +82,3 @@ class Photo extends Media
         $this->path = Media::setPath(get_class($this));
     }
 }
-
-/* $trial2 = new Photo(date("Y/m/d"));
-var_dump($trial2); */
