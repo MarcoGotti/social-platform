@@ -22,6 +22,7 @@ if ($result && $result->num_rows > 0) {
     }
 }
 
+var_dump($posts[0]->media[1]->path, $posts[0]->media[1]->type);
 var_dump($posts);
 
 ?>
