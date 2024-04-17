@@ -2,7 +2,7 @@
 
 /* ricerca con tags WHERE tags LIKE "%estate%" */
 
-require __DIR__ . '/database/conn_mysql.php';
+require_once __DIR__ . '/database/conn_mysql.php';
 require_once __DIR__ . '/database/db_mysql.php';
 include __DIR__ . '/models/Cathegory.php';
 

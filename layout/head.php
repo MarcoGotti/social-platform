@@ -15,7 +15,7 @@
         <h2 class="mb-0 text-uppercase text-danger fw-bold">Social plattform</h2>
         <div>
             <a href="http://localhost/social-platform/index.php">Home</a>
-            <a href="http://localhost/social-platform/models/Post.php">Post</a>
+            <a href="http://localhost/social-platform/Post_page.php">Post</a>
 
         </div>
 
