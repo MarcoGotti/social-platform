@@ -1,5 +1,6 @@
 <?php
 
+
 function getColor($array, $tag)
 {
     foreach ($array as $object) {

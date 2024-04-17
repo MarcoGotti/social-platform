@@ -2,17 +2,18 @@
 
 include __DIR__ . '/Media.php';
 
+
 class Post
 {
     public static int $numb = 0;
     public int $id;
-    public array $media;
+    public array $medias;
     protected $likes;
 
     public function __construct(
         public string $username,
         public string $title,
-        public string $created_at,
+        public string $date,
         public array $tags
     ) {
         $this->id = self::setId(get_class($this));
@@ -30,7 +31,7 @@ class Post
     public function addMedia($type)
     {
         if ($type === 'Video' || $type === 'Photo') {
-            $this->media[] = new $type();
+            $this->medias[] = new $type();
         } else {
             echo "Error: only addMedia('Video') or addMedia('Photo')" . '<br>';
         }
@@ -38,7 +39,7 @@ class Post
 
     public function getMedias()
     {
-        return $this->media;
+        return $this->medias;
     }
 
     public static function setId($class)

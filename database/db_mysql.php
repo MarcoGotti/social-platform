@@ -1,5 +1,10 @@
 <?php
 
+require_once __DIR__ . '/conn_mysql.php';
+include __DIR__ . '/../models/Cathegory.php';
+
+
+
 $sql = (
     'SELECT DATE(`date`) AS `date`, `title`, `tags`, t.`tot_likes` 
     FROM posts
