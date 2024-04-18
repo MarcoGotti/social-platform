@@ -1,7 +1,7 @@
 <?php
 
 require __DIR__ . '/layout/head.php';
-include_once __DIR__ . '/database/arrayResult.php'
+include_once __DIR__ . '/database/db_oop.php';
 
 //var_dump($posts[0]);
 ?>
@@ -10,31 +10,34 @@ include_once __DIR__ . '/database/arrayResult.php'
 
 <main>
     <div class="container py-5">
-        <div class="row row-cols-5 g-3">
+        <div class="row row-cols-5 ">
 
             <?php
             foreach ($posts as $post) : ?>
 
                 <div class="col border border-2 border-black">
-                    <h4><?php echo $post->id . ' ' . $post->title ?></h4>
-                    <p><?php echo $post->date . '  by  ' . $post->username ?></p>
+                    <div class="py-2">
 
-                    <div><strong>Medias</strong>
-                        <?php
-                        foreach ($post->medias as $media) : ?>
+                        <h4><?php echo $post->id . ' ' . $post->title ?></h4>
+                        <p><?php echo $post->date . '  by  ' . $post->username ?></p>
 
-                            <div><?php echo $media->type . '   ...' . substr($media->path, 38) ?></div>
+                        <div><strong>Medias</strong>
+                            <?php
+                            foreach ($post->medias as $media) : ?>
 
-                        <?php endforeach; ?>
-                    </div>
+                                <div><?php echo $media->type . '   ...' . substr($media->path, 38) ?></div>
 
-                    <div class="mt-2"><strong>Tags</strong><br>
-                        <?php
-                        foreach ($post->tags as $tag) : ?>
+                            <?php endforeach; ?>
+                        </div>
 
-                            <span><?= $tag ?> </span>
+                        <div class="mt-2"><strong>Tags</strong><br>
+                            <?php
+                            foreach ($post->tags as $tag) : ?>
 
-                        <?php endforeach; ?>
+                                <span><?= $tag ?> </span>
+
+                            <?php endforeach; ?>
+                        </div>
                     </div>
 
                 </div>

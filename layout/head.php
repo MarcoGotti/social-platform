@@ -10,12 +10,13 @@
     <link rel="stylesheet" href="./assets/style.css">
 </head>
 
-<body>
+<body class="bg-white">
     <header class="justify-content-evenly p-3 text-center bg-body-secondary shadow d-flex align-items-center">
+
         <h2 class="mb-0 text-uppercase text-danger fw-bold">Social plattform</h2>
-        <div>
-            <a href="http://localhost/social-platform/index.php">Home</a>
-            <a href="http://localhost/social-platform/Post_page.php">Post</a>
+        <div class="align-self-end">
+            <a class="text-decoration-none text-black me-2" href="http://localhost/social-platform/index.php">Home</a>
+            <a class="text-decoration-none text-black me-2" href="http://localhost/social-platform/Post_page.php">Post</a>
 
         </div>
 
