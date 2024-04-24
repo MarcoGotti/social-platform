@@ -4,7 +4,7 @@ require_once __DIR__ . '/conn_mysql.php';
 include __DIR__ . '/../models/Cathegory.php';
 
 
-//stringa di una query. Interrogazione db
+//Interrogazione del db con una query. $sql è una string. La string è una query. 
 $sql =
     'SELECT DATE(`date`) AS `date`, `title`, `tags`, t.`tot_likes` 
     FROM posts
@@ -12,5 +12,5 @@ $sql =
               FROM `likes`
               GROUP BY post_id)t ON t.post_id = posts.id;';
 
-//eseguire la query e messa in var $result
+//eseguire la query con il method query(). Salvare l'esecuzione in una var $result
 $result = $connection->query($sql);
