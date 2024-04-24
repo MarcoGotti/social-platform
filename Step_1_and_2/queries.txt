@@ -13,6 +13,9 @@ SELECT `id`, `title`
 FROM `posts` 
 WHERE `id` NOT IN(SELECT `post_id` FROM `likes`);
 
+---JOIN fra posts e like 
+WHERE like = null---
+
 ________________________________________________________________________
 3. Conta il numero di like per ogni post (165) 
 
@@ -33,6 +36,8 @@ FROM `posts`
 LEFT JOIN `likes` ON `likes`.`post_id`=`posts`.`id` 
 GROUP BY `posts`.`id`;
 
+---COUNT(like.id)---
+
 _______________________________________________________________________
 4. Ordina gli utenti per il numero di media caricati (25)
 
@@ -41,6 +46,7 @@ _______________________________________________________________________
     SELECT `user_id`, COUNT(*) AS `tot_uploaded_medias`
     FROM `medias`
     GROUP BY `user_id`
+    ---HAVING `tot_uploaded_medias` > 5--- come where ma dopo la group by. Per grandezze aggregate
     ORDER BY `tot_uploaded_medias`;
 
 # Version with column `users`.`username`

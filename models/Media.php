@@ -67,7 +67,7 @@ class Video extends Media
     function __construct()
     {
         parent::__construct();
-        $this->type = get_class($this);
+        $this->type = get_class($this); //non ha senso memorizzare in una var perchè riutilizzabile in istanza
         $this->path = Media::setPath(get_class($this));
     }
 }

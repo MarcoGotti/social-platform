@@ -9,4 +9,5 @@ function getColor($array, $tag)
             return $object->color;
         }
     }
+    return ''; //se arriva qui è perchè non ha trovato niente 
 }
